@@ -5,9 +5,9 @@ contract coinBox {
     uint256 fundLimit;
     uint256 initialTime;
 
-    constructor() public {
+    constructor(uint256 _limit_amount) public {
         owner = msg.sender;
-        fundLimit = 60 * 1e18;
+        fundLimit = _limit_amount;
         initialTime = block.timestamp;
     }
 
@@ -47,7 +47,4 @@ contract coinBox {
         return initialTime;
     }
 
-    function breakBox(address _addr) external payable ownerOnly() {
-        selfdestruct(_addr);
-    }
 }
