@@ -36,6 +36,9 @@ contract coinBox {
         if (maxMonthCoins * monthsEclipsed > fundLimit - address(this).balance) {
             max = maxMonthCoins * monthsEclipsed - (fundLimit - address(this).balance);
         }
+        if (max > fundLimit) {
+            max = fundLimit;
+        }
         return max;
     }
 
